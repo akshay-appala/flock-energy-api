@@ -18,6 +18,6 @@ app.get("/health", (req, res) => {
 });
 
 // Meter routes
-app.use("/api/meters", meterRoutes);
+app.use("/api/v1/meters", meterRoutes);
 
 module.exports = app;

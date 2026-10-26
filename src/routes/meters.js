@@ -67,7 +67,7 @@ router.get("/:meterId/geo", async (req, res) => {
 });
 
 // Get meter energy readings
-router.get("/:meterId/energy", async (req, res) => {
+router.get("/:meterId/consumption", async (req, res) => {
   try {
     const { meterId } = req.params;
 
