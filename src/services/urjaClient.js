@@ -31,8 +31,22 @@ async function searchMeters(query, page) {
   return response.data;
 }
 
+async function getMeterDetails(meterId) {
+  const response = await urjaClient.get(
+    `/meters/${meterId}/__data.json`,
+    {
+      params: {
+        "x-sveltekit-invalidated": "001",
+      },
+    }
+  );
+
+  return response.data;
+}
+
 module.exports = {
   getMeterGeo,
   getMeterEnergy,
   searchMeters,
+  getMeterDetails,
 };

@@ -4,6 +4,7 @@ const {
   getMeterGeo,
   getMeterEnergy,
   searchMeters,
+  getMeterDetails,
 } = require("../services/urjaClient");
 
 const router = express.Router();
@@ -23,6 +24,25 @@ router.get("/", async (req, res) => {
     res.status(error.response?.status || 500).json({
       status: "error",
       message: "Failed to search meters",
+    });
+  }
+});
+
+// Get meter details
+router.get("/:meterId", async (req, res) => {
+  try {
+    const { meterId } = req.params;
+
+    const data = await getMeterDetails(meterId);
+
+    res.json({
+      status: "success",
+      data,
+    });
+  } catch (error) {
+    res.status(error.response?.status || 500).json({
+      status: "error",
+      message: "Failed to fetch meter details",
     });
   }
 });
